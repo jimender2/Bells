@@ -6,6 +6,7 @@ import wave
 
 <<<<<<< HEAD
 def bellringer(sound_type) :
+<<<<<<< HEAD
 	os.system("amixer -q -- sset PPCM playback 100 dB")
 	os.system("aplay -q -D sysdefault bellringer.wav")
 =======
@@ -36,3 +37,8 @@ stream.close()
 #close PyAudio  
 p.terminate()
 >>>>>>> parent of 5200dd8... Use aplayer
+=======
+	temp_volume = 100 + "dB"
+	os.system("amixer -q -- sset PPCM playback " + temp_volume)
+	os.system("aplay -q -D sysdefault bellringer.wav")
+>>>>>>> parent of e79e9d5... Update sound
