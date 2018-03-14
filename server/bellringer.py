@@ -1,32 +1,10 @@
 #!usr/bin/env python  
 #coding=utf-8  
 
-import pyaudio  
-import wave  
+import time
+import os
 
-#define stream chunk   
-chunk = 1024  
-
-#open a wav format music  
-f = wave.open("bellsound.wav","rb")  
-#instantiate PyAudio  
-p = pyaudio.PyAudio()  
-#open stream  
-stream = p.open(format = p.get_format_from_width(f.getsampwidth()),  
-                channels = f.getnchannels(),  
-                rate = f.getframerate(),  
-                output = True)  
-#read data  
-data = f.readframes(chunk)  
-
-#play stream  
-while data:  
-    stream.write(data)  
-    data = f.readframes(chunk)  
-
-#stop stream  
-stream.stop_stream()  
-stream.close()  
-
-#close PyAudio  
-p.terminate()
+def bellringer(sound_type) :
+	temp_volume = 100 + "dB"
+	os.system("amixer -q -- sset PPCM playback " + temp_volume)
+	os.system("aplay -q -D sysdefault bellringer.wav")
