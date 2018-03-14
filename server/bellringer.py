@@ -1,8 +1,8 @@
 #!usr/bin/env python  
 #coding=utf-8  
 
-import pyaudio  
-import wave  
+import time
+import os
 
 def bellringer(sound_type) :
 
