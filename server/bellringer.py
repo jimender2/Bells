@@ -10,3 +10,5 @@ def bellringer(sound_type) :
 	os.system("amixer cset numid=3 1")
 	os.system("amixer -q -- sset PPCM playback " + temp_volume)
 	os.system("aplay -q -D sysdefault /bellsound.wav")
+
+bellringer(1)
