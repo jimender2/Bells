@@ -148,9 +148,9 @@ if (isset($_POST['shutdown'])) {
 			<span class="statusRAM"></span>
     				</br>
     				<?php
-        		echo "Libero: " . number_format((($free_space)/$total_space)*100) . "% = " . number_format($free_space/(1024)) . "MB" . "</br>";
-        		echo "Usato: " . number_format((($total_space - $free_space)/$total_space)*100) . "% = " . number_format(($total_space-$free_space)/(1024)) . "MB" . "</br>";
-        		echo "Totale: " . number_format($total_space/(1024)) . "MB" . "</br>";
+        		echo "Free: " . number_format((($free_space)/$total_space)*100) . "% = " . number_format($free_space/(1024)) . "MB" . "</br>";
+        		echo "Used: " . number_format((($total_space - $free_space)/$total_space)*100) . "% = " . number_format(($total_space-$free_space)/(1024)) . "MB" . "</br>";
+        		echo "Total: " . number_format($total_space/(1024)) . "MB" . "</br>";
         		?>
 
     			</br>

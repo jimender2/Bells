@@ -1,33 +1,4 @@
 <?php
-/*
- *      reboot.php
- *
- *		This file if part of the "sophia" bell management system
- *		For more information on the software please visit:
- *		https://lizzit.it/sophia
- *
- *      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
- *      Last update: 25 Apr 2016
- *      Version: 1.2
- *
- *      Copyright (c) 2016 Michele Lizzit
- *      
- *      This program is free software: you can redistribute it and/or modify
- *      it under the terms of the GNU Affero General Public License as published
- *      by the Free Software Foundation, either version 3 of the License, or
- *      (at your option) any later version.
- *    
- *      This program is distributed in the hope that it will be useful,
- *      but WITHOUT ANY WARRANTY; without even the implied warranty of
- *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *      GNU Affero General Public License for more details.
- *    
- *      You should have received a copy of the GNU Affero General Public License
- *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-?>
-
-<?php
 header('Expires: Sun, 01 Jan 2014 00:00:00 GMT');
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
@@ -73,15 +44,15 @@ header('Pragma: no-cache');
 			<li><a href="status.php">Status</a></li>
 			<li><a href="credits.php">Credits / Info</a></li>
 		</div>
-		<div id="main"> <p> <span id="title">Riavvio: </span>
+		<div id="main"> <p> <span id="title">restarting: </span>
 				<br>
 				<br>
-				Il sistema verrà riavviato, attendi.
+				The system will restart, wait.
 				<div class="status_bar_container" style="width: 95%; margin-left: auto; margin-right: auto;">
         			<div id="status_bar" class="status_bar" style="width: 0%;">&nbsp;</div>
       				</div>
       				<div id="status_bar_box" class="status_bar_box">
-      				Il sistema è stato riavviato.
+      				The system has been restarted.
       				<br>
       				<form action="/">
 					<input type="submit" value="Homepage"/>
