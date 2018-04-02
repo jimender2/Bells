@@ -8,24 +8,17 @@ var langEN = {
 	home: "Home",
 	credits: "Credits / Info",
 	projectDescription: "Presentazione del progetto: ",
-	quickguide: "Guida all'utilizzo di sophia",
+	quickguide: "Guide to using sophia",
 	quickguideContent: "\
-		<strong>sophia</strong> is an open-source bell management system designed for schools.<br>\
-		It can control the bells of a school through the internet.<br>\
-		With user-friendly interface you can manage a system of RaspberryPi’s.<br>\
-		You have only to connect a loudspeaker or the classic school bell to the RaspberryPi and you are ready!<br>\
-		Using a single software for all the bells, the managing becomes very easy: all the school bells will ring at the same time and in a few seconds you will be able to change the timetable.<br>\
-		The software is very versatile and can plan different timetables: daily, weekly, monthly or whatever.<br>\
-		The software automatically syncronizes the internal clock with a remote atomic clock using the NetworkTimeProtocol.<br>\
-		The software is designed for schools but is suitable for a lot more applications!<br>\
+		<strong>sophia</strong> is an open-source bell management system designed for BR.<br>\
 		",
-	updateSettings: "Aggiornare le impostazioni?",
+	updateSettings: "Update Settings?",
 	helpText: "\
 	<li>\
 	</br>\
 	</br>\
 	</br>\
-	Disabilita o abilita la sophia.</br>\
+	Disable or enable sophia.</br>\
 	<i>Default: enabled</i>\
 	</br>\
 	</br>\
@@ -33,8 +26,8 @@ var langEN = {
 	</br>\
 	</br>\
 	</br>\
-	Inserisci gli orari a cui fare suonare la sophia\
-	Scrivere l'ora nel formato aaaa-MM-gg hh:mm:ss oppure w hh:mm:ss dove w è compreso tra 1 e 7, ed indica il giorno della settimana (es 1 = lunedì) oppure nel formato hh:mm:ss per fare squillare la sophia ogni giorno.\
+	Enter the times for sophia to play\
+	Write the time in the format yyyy-MM-dd hh: mm: ss or d hh: mm: ss where d is between 1 and 7, and indicates the day of the week (eg 1 = Monday) or in the hh: mm: ss format to make sophia ring every day.\
 	</br>\
 	</br>\
 	</br>\
@@ -48,43 +41,43 @@ var langEN = {
 	</br>\
 	</br>\
 	<b>\
-	Inserisci l'ora in cui il raspberry pi deve sincronizzare l'orologio interno con il server NTP</br>\
-	NOTA:</br>\
-	questa procedura richiede 35 secondi durente il quale la sophia viene temporaneamente disabilitata.</br>\
-	In caso di mancanza di connessione a internet o in caso di errato indirizzo NTP la sincronizzazione fallisce e NON viene riportato alcun errore nella pagina status</br>\
+	Enter the time when the raspberry pi must synchronize the internal clock with the NTP server</br>\
+	NOTE:</br>\
+	this procedure requires 35 seconds, during which the sophia is temporarily disabled.</br>\
+	In case of lack of internet connection or in case of wrong NTP address the synchronization fails and NO error is reported in the status page</br>\
 	</b>\
-	È consigliato impostare l'ora di notte</br>\
+	It is recommended to set the time at night</br>\
 	<i>Default: 02:00:00</i>\
 	</br>\
 	</br>\
 	</br>\
 	</br>\
-	Il server NTP con cui sincronizzare l'ora\
+	The NTP server with which to synchronize the time\
 	</br>\
-	Il server consigliato è ntp1.inrim.it del Laboratorio di Tempo e Frequenza Campione.\
+	The recommended server is ntp1.inrim.it of the Time and Frequency Sample Laboratory.\
 	</br>\
 	Default: ntp1.inrim.it\
 	</br>\
 	</br>\
 	</br>\
 	</br>\
-	Il volume della sophia<br>\
+	The Volume of Sophia. LEAVE ALONE.<br>\
 	Max: 4         Min: -100\
 	</br>\
 	<b>\
-	NOTA:\
+	NOTE:\
 	</br>\
-	Il volume è espresso in dB, per questo è logaritmico\
+	The volume is expressed in dB, which is why it is logarithmic\
 	</br>\
 	</b>\
 \
 	<i>Default: 4</i>\
 	</br>\
 	</br>\
-	Seleziona per suonare la sophia ora\
+	PLAY BELL NOW\
 	</br>\
 	</br>\
-	Seleziona per sincronizzare ora l'orologio interno con il server NTP\
+	UPDATE Sophia with NTP time\
 	</br>\
 	</br>\
 	</br>\
@@ -92,35 +85,14 @@ var langEN = {
 	</li>\
 	<li></li>\
 	",
-	helpTitle: " Help ",
-	creditsTitle: "Credits: ",
-	creditsText: "\
-	<br><br>\
-	Il programma Python è stato scritto da<strong> Michele Lizzit.</strong><br>\
-	Il CSS è stato scritto da <strong>Daniele Toppano e Marco Ferrari.</strong><br>\
-	L'HTML è stato scritto da <strong>Michele Lizzit e Daniele Toppano.</strong><br>\
-	Il PHP è stato scritto da <strong>Michele Lizzit.</strong><br>\
-	Il logo \"CopernicoDrin\" è stato creato da <strong>Marco Ferrari.</strong><br>\
-	Il software per il controllo dell'LCD è stato scritto da <strong>Michele Lizzit.</strong><br><br>\
-	Michele Lizzit<br> <i>michele@lizzit.it - <a href=\"https://lizzit.it\">lizzit.it</a></i><br>\
-	Daniele Toppano <br><i>danitoppano@gmail.com</i><br>\
-	Marco Ferrari <br><i>marcogio99@gmail.com</i><br>\
-	<br>\
-	Il computer che gestisce la sophia e il server è un Raspberry PI modello B con Raspbian<br>\
-	Il software è scritto in PHP e Python<br>\
-	Il display LCD è gestito da una scheda Arduino UNO che legge i dati, tramite seriale, dal RaspberryPi<br>\
-	Ultima modifica del software 26/04/2016<br>\
-	<br>\
-	Il software è rilasciato in licenza GNU AGPLv3, il sorgente è gratuitamente scaricabile da <a href=\"https://lizzit.it/sophia\">lizzit.it/sophia</a>\
-	",
-	settingsTitle: "Modifica le impostazioni: ",
+	settingsTitle: "Modify Bells: ",
 	settingsReset: "Reset",
-	settingsUpdate: "Aggiorna impostazioni",
-	settingsRingNow: "Suona sophia ORA",
+	settingsUpdate: "Update Settings",
+	settingsRingNow: "Ringing Sophia",
 	settingsVolume: "Volume (da -100 a 4)",
-	settingsTime: "Ora in cui sincronizzare il server ntp nel formato hh:mm:ss",
+	settingsTime: "Time to synchronize the ntp server in the format hh:mm:ss",
 	settingsNTP: "Server NTP",
-	settingsSound: "Imposta suono",
+	settingsSound: "Set sound (Not working)",
 	settingsNTPnow: "Aggiorna NTP ORA",
 	settingsEnable: "Enable/Disable sophia",
 	settingsEnabledText: "Enabled",
