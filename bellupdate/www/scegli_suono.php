@@ -1,33 +1,4 @@
 <?php
-/*
- *      scegli_suono.php
- *
- *      This file if part of the "sophia" bell management system
- *      For more information on the software please visit:
- *      https://lizzit.it/sophia
- *
- *      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
- *      Last update: 25 Apr 2016
- *      Version: 1.2
- *
- *      Copyright (c) 2016 Michele Lizzit
- *
- *      This program is free software: you can redistribute it and/or modify
- *      it under the terms of the GNU Affero General Public License as published
- *      by the Free Software Foundation, either version 3 of the License, or
- *      (at your option) any later version.
- *
- *      This program is distributed in the hope that it will be useful,
- *      but WITHOUT ANY WARRANTY; without even the implied warranty of
- *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *      GNU Affero General Public License for more details.
- *
- *      You should have received a copy of the GNU Affero General Public License
- *      along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-?>
-
-<?php
 
 require('definitions.php');
 
@@ -41,7 +12,7 @@ echo "<pre>Ho eliminato il file selezionato</pre>";
 
 
 if (isset($_POST['elimina_tutto_button'])) {
-echo "<pre>Ho eliminato tutti i file precedentemente caricati</pre>";
+echo "<pre>I have deleted all previously uploaded files</pre>";
 if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
 
 		while (false !== ($entry = readdir($handle))) {
@@ -59,7 +30,7 @@ if ($handle = opendir($SOUNDFILE_UPLOAD_DIR)) {
 
 if (isset($_POST['selected_sound'])) {
 		if (substr($_POST['selected_sound'], -4) == ".wav") {
-			echo "<pre>Impostato suono</pre>";
+			echo "<pre>Set sound</pre>";
 		$data_file = $SOUNDFILE_UPLOAD_DIR . $_POST['selected_sound'];
 		unlink($ACTIVE_SOUNDFILE_PATH);
 		copy($data_file, $ACTIVE_SOUNDFILE_PATH);
