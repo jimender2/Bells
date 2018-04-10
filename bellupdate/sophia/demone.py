@@ -1,34 +1,7 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 
-###
- #      demone.py
- #
- #      Python daemon for the "sophia" bell management system
- #		For more information on the software please visit:
- #		https://lizzit.it/sophia
- #
- #      Written by: Michele Lizzit <michele@lizzit.it>, 20 Mar 2014
- #      Last update: 22 Sept 2017
- #      Version: 1.2
- #
- #      Copyright (c) 2016 Michele Lizzit
- #     	
- #      This program is free software: you can redistribute it and/or modify
- #		it under the terms of the GNU Affero General Public License as published
- #		by the Free Software Foundation, either version 3 of the License, or
- #		(at your option) any later version.
- #		
- #		This program is distributed in the hope that it will be useful,
- #		but WITHOUT ANY WARRANTY; without even the implied warranty of
- #		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- #		GNU Affero General Public License for more details.
- #		
- #		You should have received a copy of the GNU Affero General Public License
- #		along with this program.  If not, see <http://www.gnu.org/licenses/>.
-###
-
-#TODO: verificare accessibilita internet prima di suonare
+#TODO: Check internet accessability befor playing
 
 import time
 import os
@@ -93,7 +66,7 @@ def modifica_opzione_suona_ora() :
 	temp_file_content = options_file.read()
 	options_file.close()
 	
-	temp_file_content = temp_file_content.replace("#NON MODIFICARE QUESTO COMMENTO squilla ora\n1", "#NON MODIFICARE QUESTO COMMENTO squilla ora\n0", 1);
+	temp_file_content = temp_file_content.replace("#DO NOT MODIFY THIS COMMENT Rings now\n1", "#DO NOT MODIFY THIS COMMENT Rings now\n0", 1);
 	
 	options_file = open("/opt/sophia/OPTIONS.txt", 'w')
 	options_file.write(temp_file_content)
@@ -109,7 +82,7 @@ def modifica_opzione_update_ntp() :
 	options_file.write(temp_file_content)
 	options_file.close()
 
-#set dei GPIO
+#set the GPIO
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(GPIO_BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP) #PULSANTE
@@ -119,12 +92,12 @@ GPIO.setup(GPIO_LED_RED_PIN, GPIO.OUT) #RED
 GPIO.setup(GPIO_sophia_PIN, GPIO.OUT)  #sophia
 set_led_color("green")
 
-#leggi i dati dal file
+#Read the data from the file
 error = 0
 options = []
 orari = []
 
-write_error("") #cancella tutti gli errori
+write_error("") #Clear all errors
 
 startTime = round(time.time())
 
@@ -156,7 +129,7 @@ else :
 	write_error(time.strftime("[%H:%M:%S %d/%m/%Y") + "] sophia daemon: FATAL ERROR, line mismatch in OPTIONS.txt")
 	exit()
 
-#carica i dati del file options nelle variabili
+#Loads the data from file into variables
 num_of_lines = 0
 status = 0
 run = 0
@@ -200,9 +173,9 @@ orari = [e.rstrip() for e in orari]
 
 
 print ""
-print "Programma python scritto da Michele Lizzit"
-print "Written by Michele Lizzit - lizzit.it"
-print "Last update 24 Sept 2017"
+print ""
+print ""
+print ""
 print ""
 
 if (suona_sophia_ora) :
@@ -215,13 +188,13 @@ while (1) :
 
 	print orari;
 	
-	#controlla se è ora di suonare la sophia
+	#Check to see if it is time to play sophia
 	if (time.strftime("%u %H:%M:%S") in orari) or (time.strftime("%H:%M:%S") in orari) or (time.strftime("%F %T") in orari) :
 		sophia_suona(1)
 		suonato = 1
 
 	
-	#verifica se è ora di aggiornare l'orologio di sistema con il server NTP
+	#See if I should update the NTP time from the server
 	if ((time.strftime("%u %H:%M:%S") == update_ntp) or (time.strftime("%H:%M:%S") == update_ntp) or (time.strftime("%F %T") == update_ntp) or (update_ntp_now == 1)) :
 		get_ntp_time()
 		suonato = 1
@@ -229,17 +202,17 @@ while (1) :
 			update_ntp_now = 0
 			modifica_opzione_update_ntp()
 
-	#attende fino al secondo seguente
+	#Wait for the next server
 	tmp = 0
 	while time.strftime("%H:%M:%S") == prev_time :
 		tmp += 1
 		time.sleep(0.1)
 
-	#verifica se ha saltato un secondo
+	#See if I missed a second
 	if (tmp <= 4) and (suonato == 0) :
 		print time.strftime("[%H:%M:%S %d/%m/%Y") + "] sophia daemon: ERROR, did the system time change or is the system overloaded?"
 	
-	#controllo pressione del pulsante
+	#Button control
 	input_value = GPIO.input(GPIO_BUTTON_PIN)
 	if input_value == 0 :
 		sophia_suona(1)
