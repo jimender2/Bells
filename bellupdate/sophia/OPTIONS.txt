@@ -1,8 +1,8 @@
-#le righe che iniziano con # vengono scartate
+#The lines starting with # are discarded
 34
 #enable
 1
-#track duratin in seconds
+#track duration in seconds
 1
 #volume
 4
@@ -12,9 +12,9 @@ ntp1.inrim.it
 02:00:00
 #update ntp now
 0
-#NON MODIFICARE QUESTO COMMENTO squilla ora
+#Do NOT CHANGE THIS COMMENT rings now
 0
-#num_options includendo questa
+#num_options including this
 9
 9:50:00
 9:30:00
