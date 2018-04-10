@@ -114,7 +114,7 @@ var langEN = {
 	guideContent: "\
 	The software works on Raspberry PI Model A or B and on any Linux machine. <br> \
 	For more information on the software please visit:
-	<a href=\"https://jimender2.github.io\">https://jimender2.github.io</a>\
+	<a href="https://jimender2.github.io/">https://jimender2.github.io</a>\
 	",
 	uploadText: "Upload",
 	updateSettings: "Settings",
