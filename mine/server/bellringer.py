@@ -12,5 +12,10 @@ def bellringer(sound_type) :
 	os.system("amixer sset PCM,0 100%")
 	os.system("aplay -q -D sysdefault /home/pi/Bells/server/bellsound.wav")
 
+optionRead = open("options.txt", "r")
+bellOne = optionRead.readline()
+bellTwo = optionRead.readline()
+bellThree = optionRead.readline()
+
 bellringer(1)
 
