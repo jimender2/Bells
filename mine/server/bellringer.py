@@ -16,6 +16,12 @@ optionRead = open("options.txt", "r")
 bellOne = optionRead.readline()
 bellTwo = optionRead.readline()
 bellThree = optionRead.readline()
+bellFour = optionRead.readline()
+
+print(bellOne)
+print(bellTwo)
+print(bellThree)
+print(bellFour)
 
 bellringer(1)
 
