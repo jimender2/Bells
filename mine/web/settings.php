@@ -12,16 +12,16 @@ while (($line = fgets($handle)) !== false) {
 	}
 }
 
-if (isset($_POST['enable']) && isset($_POST['schedule']) && isset($_POST['ntp_update_time']) && isset($_POST['ntp_server']) && isset($_POST['volume'])) {
+if (isset($_POST['enable']) && isset($_POST['orari']) && isset($_POST['ntp_update_time']) && isset($_POST['ntp_server']) && isset($_POST['volume'])) {
 	
-	$timetable = trim($_POST['schedule']);
+	$timetable = trim($_POST['orari']);
 	$lines = 8 + substr_count($timetable,"\n") + 2;
 
-	if (isset($_POST['ring_now'])) {
-		$ring_now = 1;
+	if (isset($_POST['squilla_ora'])) {
+		$squilla_ora = 1;
 	}
 	else {
-		$ring_now = 0;
+		$squilla_ora = 0;
 	}
 	if (isset($_POST['NTP_ora'])) {
 		$update_ntp_now = 1;
@@ -30,11 +30,11 @@ if (isset($_POST['enable']) && isset($_POST['schedule']) && isset($_POST['ntp_up
 		$update_ntp_now = 0;
 	}
 
-	$options_string = "#the lines starting with # are considured to be a comment and are not rung\n"
+	$options_string = "#lines starting with # are discarded\n"
 	. $lines .
 	"\n#enable\n"
 	. $_POST['enable'] .
-	"\n#how long the song is played in seconds\n" .
+	"\n#track duratin in seconds\n" .
 	"1\n" . 
 	"#volume\n" . 
 	$_POST['volume'] .
@@ -45,20 +45,20 @@ if (isset($_POST['enable']) && isset($_POST['schedule']) && isset($_POST['ntp_up
 	"\n#update ntp now\n"
 	. $update_ntp_now .
 	"\n#DO NOT MODIFY THIS COMMENT rings now\n"
-	. $ring_now .
+	. $squilla_ora .
 	"\n#num_options including this\n" .
 	"9\n"
 	. $timetable;
 
-	file_put_contents($OPTIONS_FILE_PATH, $options_string);
+	file_put_contents($OPTIONS_FILE_PATH, $timetable);
 
 	header(sprintf('Location: %s', $url));
 	printf('<a href="%s">Moved</a>.', htmlspecialchars($url));
-	exec("/usr/bin/sudo $RESTART_CAMPANELLA_SCRIPT_PATH > /dev/null", $prova);
+	exec("/usr/bin/sudo $RESTART_sophia_SCRIPT_PATH > /dev/null", $prova);
 	echo "<pre>Done</pre>";
 	exit();
 }
-else if (isset($_POST['enable']) || isset($_POST['schedule']) || isset($_POST['ntp_update_time']) || isset($_POST['ntp_server']) || isset($_POST['update_ntp']) || isset($_POST['volume'])) {
+else if (isset($_POST['enable']) || isset($_POST['orari']) || isset($_POST['ntp_update_time']) || isset($_POST['ntp_server']) || isset($_POST['update_ntp']) || isset($_POST['volume'])) {
 	$error = 1;
 }
 
@@ -97,7 +97,7 @@ textarea {
 			<div id="main" style="width:540px;"> <p> <span id="title" class="settingsTitle"></span></p>
 				<?php
 				if ($error == 1) {
-					echo '		<script language="javascript" type="text/javascript"> alert("You have submitted the schedule correctly")</script>';
+					echo '		<script language="javascript" type="text/javascript"> alert("You have filled out the form")</script>';
 				}
 				?>
 
@@ -107,7 +107,7 @@ textarea {
 					<input type="radio" name="enable" value="0" <?php if ($options[1] == 0) { echo "checked=\"checked\""; } ?>><span class="settingsDisabledText"></span>
 					<br>
 					<h4 class="settingsTimetable"></h4>
-					<textarea name="schedule" rows=5><?php
+					<textarea name="orari" rows=5><?php
 
 					$xx = $options[8] - 1;
 					while($xx < count($options)) {
@@ -122,7 +122,7 @@ textarea {
 					<h4 class="settingsVolume"></h4>
 					<h5><input type="text" name="volume" value="<?php echo $options[3]; ?>"></h5>
 
-					<h4><input type="checkbox" name="ring_now" value="ring_now"/> <span class="settingsRingNow"></span></h4>
+					<h4><input type="checkbox" name="squilla_ora" value="squilla_ora"/> <span class="settingsRingNow"></span></h4>
 					<h4><input type="checkbox" name="NTP_ora" value="NTP_ora"/> <span class="settingsNTPnow"></span></h4>
 					<br>
 					<br>
