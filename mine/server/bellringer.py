@@ -50,7 +50,6 @@ while moretofile == True:
 		timefromfile = timefromfile.rstrip('\n')
 		if timefromfile == "done":
 			break
-		print("test")
 		dayandtime = day + ' ' + timefromfile
 		bell = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
 
