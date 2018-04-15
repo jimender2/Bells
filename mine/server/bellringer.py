@@ -20,25 +20,44 @@ def bellringer(sound_type) :
 	#os.system("aplay -q -D sysdefault /home/pi/Bells/server/bellsound.wav")
 
 optionRead = open("options.txt", "r")
-day = optionRead.readline()
-day = day.rstrip('\n')
-dayandtime = day + ' ' + optionRead.readline()
-dayandtime = dayandtime.rstrip('\n')
 
+moretofile = True
+donotend = True
+oneminold = datetime.timedelta(days=0, hours=0, minutes=1, seconds=0)
 
-bellOne = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
-
-
-#bellTwo = optionRead.readline()
-#bellThree = optionRead.readline()
-#bellFour = optionRead.readline()
-
-print(bellOne)
-
-while 1==1:
-	while datetime.datetime.now() < bellOne:
-		time.sleep(1)
-	bellringer(1)
+while moretofile == True:
+	day = optionRead.readline()
+	day = day.rstrip('\n')
 	dayandtime = day + ' ' + optionRead.readline()
 	dayandtime = dayandtime.rstrip('\n')
-	bellOne = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
+	bell = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
+	while donotend==True:
+		print(bell)
+		#saves cpu cycles
+		while datetime.datetime.now() < bell:
+			time.sleep(1)
+		
+		#make it not ring if more than a minute old
+		timeElapsed = datetime.datetime.now() - bell
+		print(timeElapsed)
+		while 1==1:
+			if timeElapsed > oneminold:
+				break
+			bellringer(1)
+			break
+			
+		timefromfile = optionRead.readline()
+		timefromfile = timefromfile.rstrip('\n')
+		if timefromfile == "done":
+			break
+		print("test")
+		dayandtime = day + ' ' + timefromfile
+		bell = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
+
+	print("done with day " + day)
+	timefromfile = optionRead.readline()
+	timefromfile = timefromfile.rstrip('\n')
+	if timefromfile == "End of File":
+		break
+
+print("done with everything")
