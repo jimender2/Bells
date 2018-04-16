@@ -55,7 +55,7 @@ fi
 killall demone.py
 killall serial_daemon.py
 killall lcd_daemon.py
-/opt/sophia/demone.py &
+/opt/sophia/bellringer.py &
 /opt/sophia/serial_daemon.py &
 /opt/sophia/lcd_daemon.py &
 exit
