@@ -23,7 +23,7 @@
 			</div>
 <?php
 if($_POST['Submit']){ 
-$open = fopen("options.txt","w+"); 
+$open = fopen("/opt/sophia/options.txt","w+"); 
 $text = $_POST['update']; 
 fwrite($open, $text); 
 fclose($open); 
@@ -34,7 +34,7 @@ foreach($file as $text) {
 echo $text."<br />"; 
 } 
 }else{ 
-$file = file("options.txt"); 
+$file = file("/opt/sophia/options.txt"); 
 echo "<form action=\"".$PHP_SELF."\" method=\"post\">"; 
 echo "<textarea Name=\"update\" cols=\"50\" rows=\"10\">"; 
 foreach($file as $text) { 
