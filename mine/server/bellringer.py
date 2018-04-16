@@ -23,12 +23,12 @@ def bellringer(sound_type) :
 	temp_volume = "100 dB"
 	
 	#for windows
-	winsound.PlaySound('bellsound.wav', winsound.SND_FILENAME)
+	#winsound.PlaySound('bellsound.wav', winsound.SND_FILENAME)
 
 	#for rasparian
-	#os.system("amixer cset numid=3 1")
-	#os.system("amixer sset PCM,0 100%")
-	#os.system("aplay -q -D sysdefault /home/pi/Bells/server/bellsound.wav")
+	os.system("amixer cset numid=3 1")
+	os.system("amixer sset PCM,0 100%")
+	os.system("aplay -q -D sysdefault /home/pi/Bells/server/bellsound.wav")
 
 optionRead = open("options.txt", "r")
 
