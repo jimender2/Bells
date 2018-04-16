@@ -6,6 +6,17 @@ import datetime
 import os
 import winsound
 
+f = open('log.txt', 'a')
+f.write("\n")
+f.write("\n")
+f.write("\n")
+f.write("\n")
+f.write("\n")
+f.write("Start of log")
+f.write('\n')
+
+f.flush()
+os.fsync(f.fileno())
 
 def bellringer(sound_type) :
 
@@ -32,6 +43,8 @@ while moretofile == True:
 	dayandtime = dayandtime.rstrip('\n')
 	bell = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
 	while donotend==True:
+		f.write(dayandtime)
+		f.write('\n')
 		print(bell)
 		#saves cpu cycles
 		while datetime.datetime.now() < bell:
@@ -39,7 +52,11 @@ while moretofile == True:
 		
 		#make it not ring if more than a minute old
 		timeElapsed = datetime.datetime.now() - bell
+		
+		f.write(str(timeElapsed))
+		f.write('\n')
 		print(timeElapsed)
+		
 		while 1==1:
 			if timeElapsed > oneminold:
 				break
@@ -52,11 +69,19 @@ while moretofile == True:
 			break
 		dayandtime = day + ' ' + timefromfile
 		bell = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
-
+		f.flush()
+		os.fsync(f.fileno())
+		
 	print("done with day " + day)
+	f.write("done with day " + day)
+	f.write('\n')
+	
+	f.flush()
+	os.fsync(f.fileno())
 	timefromfile = optionRead.readline()
 	timefromfile = timefromfile.rstrip('\n')
 	if timefromfile == "End of File":
 		break
 
-print("done with everything")
+f.write("done with everything")
+f.close()
