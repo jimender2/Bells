@@ -39,8 +39,14 @@ oneminold = datetime.timedelta(days=0, hours=0, minutes=1, seconds=0)
 while moretofile == True:
 	day = optionRead.readline()
 	day = day.rstrip('\n')
+	day = day.rstrip('\r')
+	day = day.rstrip()
+
 	dayandtime = day + ' ' + optionRead.readline()
 	dayandtime = dayandtime.rstrip('\n')
+	dayandtime = dayandtime.rstrip('\r')
+	dayandtime = dayandtime.rstrip()
+
 	bell = datetime.datetime.strptime(dayandtime, '%m/%d/%Y %H:%M:%S')
 	while donotend==True:
 		f.write(dayandtime)
@@ -65,6 +71,9 @@ while moretofile == True:
 			
 		timefromfile = optionRead.readline()
 		timefromfile = timefromfile.rstrip('\n')
+		timefromfile = timefromfile.rstrip('\r')
+		timefromfile = timefromfile.rstrip()
+
 		if timefromfile == "done":
 			break
 		dayandtime = day + ' ' + timefromfile
@@ -80,6 +89,9 @@ while moretofile == True:
 	os.fsync(f.fileno())
 	timefromfile = optionRead.readline()
 	timefromfile = timefromfile.rstrip('\n')
+	timefromfile = timefromfile.rstrip('\r')
+	timefromfile = timefromfile.rstrip()
+
 	if timefromfile == "End of File":
 		break
 
