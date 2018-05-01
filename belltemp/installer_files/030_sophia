@@ -1,1 +1,0 @@
-www-data ALL=(root) NOPASSWD: /sbin/poweroff,/sbin/reboot,/opt/sophia/restart_script.sh
