@@ -35,6 +35,7 @@ header('Pragma: no-cache');
 			<ul>
 			<li><a href="index.php" class="sidebarHome"></a></li>
 			<li><a href="settings.php" class="sidebarSettings"></a></li>
+			<li><a href="settings.php" class="sidebarSettings"></a></li>
 			<li><a href="status.php" class="sidebarStatus"></a></li>
 			<li><a href="credits.php" class="sidebarCredits"></a></li>
 			<?php echo file_get_contents('language_selector.html'); ?>
