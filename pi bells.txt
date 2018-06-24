@@ -1,0 +1,12 @@
+sudo gksu pcmanfm
+
+sudo nano /etc/sudoers 
+then add this to the end
+www-data ALL=(root) NOPASSWD:ALL
+
+cd .config/lxsession/LXDE-pi/ 
+sudo nano autostart
+Then scroll to the end of the file and add the following
+@chromium-browser -kiosk -incognito http://www.community.spiceworks.com
+
+make absolute paths in bellringer.py
