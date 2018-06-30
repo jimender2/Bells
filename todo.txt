@@ -1,0 +1,5 @@
+change from yellow
+make sidebar work on whole page
+add default sidebar page
+get rid of reboot
+play random song
