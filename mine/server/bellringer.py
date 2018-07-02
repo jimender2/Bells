@@ -4,7 +4,7 @@
 import time
 import datetime
 import os
-import winsound
+#import winsound
 
 #open log file for writing
 f = open('log.txt', 'a')
