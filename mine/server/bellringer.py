@@ -186,5 +186,6 @@ while moretofile == True:
 	if timefromfile == "End of File":
 		break
 
+defaultDay()
 f.write("done with everything")
 f.close()
