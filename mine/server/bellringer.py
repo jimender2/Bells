@@ -30,7 +30,8 @@ def bellringer1(sound_type) :
 	temp_volume = "100 dB"
 	
 	#get random file
-	file = random.choice(os.listdir("/opt/sophia/sounds/"))
+	fi = random.choice(os.listdir("/opt/sophia/sounds/"))
+	file = "/opt/sophia/" + fi
 	
 	#for windows
 	#winsound.PlaySound('bellsound.wav', winsound.SND_FILENAME)
