@@ -23,6 +23,22 @@ f.flush()
 os.fsync(f.fileno())
 
 #This is the function that rings the bell
+def bellringer1(sound_type) :
+
+	#sets volume of the bell in linux
+	temp_volume = "100 dB"
+	
+	#get random file
+	file = random.choice(os.listdir("/opt/sophia/sounds/"))
+	
+	#for windows
+	#winsound.PlaySound('bellsound.wav', winsound.SND_FILENAME)
+	
+	#for rasparian
+	os.system("amixer cset numid=3 1")
+	os.system("amixer sset PCM,0 100%")
+	os.system("aplay -q -D sysdefault " + file)
+
 def bellringer(sound_type) :
 
 	#sets volume of the bell in linux
@@ -72,7 +88,7 @@ def defaultDay():
 		while 1==1:
 			if timeElapsed > oneminold:
 				break
-			bellringer(1)
+			bellringer1(1)
 			break
 				
 		timefromfile = defaultFile.readline()
@@ -153,7 +169,7 @@ while moretofile == True:
 		while 1==1:
 			if timeElapsed > oneminold:
 				break
-			bellringer(1)
+			bellringer1(1)
 			break
 			
 		timefromfile = optionRead.readline()
