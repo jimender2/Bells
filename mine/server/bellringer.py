@@ -4,6 +4,7 @@
 import time
 import datetime
 import os
+import random
 #import winsound
 
 #open log file for writing
