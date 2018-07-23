@@ -31,7 +31,7 @@ def bellringer1(sound_type) :
 	
 	#get random file
 	fi = random.choice(os.listdir("/opt/sophia/sounds/"))
-	file = "/opt/sophia/" + fi
+	file = "/opt/sophia/sounds/" + fi
 	
 	#for windows
 	#winsound.PlaySound('bellsound.wav', winsound.SND_FILENAME)
@@ -39,7 +39,7 @@ def bellringer1(sound_type) :
 	#for rasparian
 	os.system("amixer cset numid=3 1")
 	os.system("amixer sset PCM,0 100%")
-	os.system("aplay -q -D sysdefault " + file)
+	os.system("mpg123 " + file)
 
 def bellringer(sound_type) :
 
